@@ -32,7 +32,7 @@ end
 
 % if the sample frequency is not 125, resample to 125
 if Fs~=125
-Q=round(Fs)
+Q=round(Fs);
 P=round(125);
 Araw = resample(Araw, P, Q);
 end
@@ -40,17 +40,14 @@ end
 
 
 %%%%%%%%%%%%%%%%FILTRO ORIGINAL QUE VIENE POR DEFECTO
-% LPF 
+% %%LPF 
 % A = filter([1 0 0 0 0 -2 0 0 0 0 1],[1 -2 1],Araw)/24+30;
 % A = (A+Offset)/Scale;
-% 
 % A = A(4:end);  % Takes care of 4 sample group delay
-%%%%%%%%%%%%%%  SIN NIGUN TIPO DE FILTRO
-% ArawReal = (Araw+Offset)/Scale;
-% A=ArawReal;
-% % Slope-sum function ... not used?
+% %Slope-sum function ... not used?
 % x = zeros(size(A));
-
+%%%%%%%%%%%%%%  SIN NIGUN TIPO DE FILTRO
+ % A = (Araw+Offset)/Scale;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db8 level 3%%%%%%%%%%%%%
 % [C,L] = wavedec(Araw,3,'db8'); 
 % A3 = wrcoef('a',C,L,'db8',3); % mejor linea base
@@ -62,8 +59,13 @@ end
 % cleanedSignal = detrend(A3);
 % A = (cleanedSignal+Offset)/Scale;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
-% [C,L] = wavedec(Araw,4,'db10'); 
-% A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+[C,L] = wavedec(Araw,4,'db10'); 
+A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+cleanedSignal = detrend(A3);
+A = (cleanedSignal+Offset)/Scale;
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 5%%%%%%%%%%%%%
+% [C,L] = wavedec(Araw,5,'db6'); 
+% A3 = wrcoef('a',C,L,'db6',5); % mejor linea base
 % cleanedSignal = detrend(A3);
 % A = (cleanedSignal+Offset)/Scale;
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym4 level 3%%%%%%%%%%%%%
@@ -91,10 +93,10 @@ end
 %    cleanedSignal = detrend(A3);
 %    A = (cleanedSignal+Offset)/Scale;
 %%%%%%%%%%%%%%%%%%%%%%%%%%% EMD  %%%%%%%%%%%%%%%%%%%%%
-  cleanedSignal = emd_dfadenoising(Araw);
-  cleanedSignal = cleanedSignal';
-  A3=detrend(cleanedSignal); 
-  A = (A3+Offset)/Scale;
+%   cleanedSignal = emd_dfadenoising(Araw);
+%   cleanedSignal = cleanedSignal';
+%   A3=detrend(cleanedSignal); 
+%   A = (A3+Offset)/Scale;
 
 dyneg = [A' 0] - [0 A'];
 dyneg(find(dyneg>0)) = 0;

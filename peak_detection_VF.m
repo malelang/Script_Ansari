@@ -8,15 +8,15 @@ function pk_locs = peak_detection_VF( ecg1_orig, ecg2_orig, abp_orig, ppg_orig, 
         ppg_orig = zeros(size(ppg_orig));
     end
 
-     [bl_ecg,al_ecg] = butter(2,[0.5,40]*2/Fs);
-%     [bl_abp,al_abp] = butter(2,[0.5,10]*2/Fs);
-%     [bl_ppg,al_ppg] = butter(2,[0.5,max_freq]*2/Fs);
-     ecg1 = filtfilt(bl_ecg,al_ecg,ecg1_orig'-ecg1_orig(1))+ecg1_orig(1);
-     ecg2 = filtfilt(bl_ecg,al_ecg,ecg2_orig'-ecg2_orig(1))+ecg2_orig(1);
+    [bl_ecg,al_ecg] = butter(2,[0.5,40]*2/Fs);
+%      [bl_abp,al_abp] = butter(2,[0.5,10]*2/Fs);
+% %     [bl_ppg,al_ppg] = butter(2,[0.5,max_freq]*2/Fs);
+  ecg1 = filtfilt(bl_ecg,al_ecg,ecg1_orig'-ecg1_orig(1))+ecg1_orig(1);
+  ecg2 = filtfilt(bl_ecg,al_ecg,ecg2_orig'-ecg2_orig(1))+ecg2_orig(1);
     
      %%%%%%%QUITANDOLE LOS FILTROS
-%     ecg1=ecg1_orig';
-%     ecg2=ecg2_orig';
+      %ecg1=ecg1_orig';
+      %ecg2=ecg2_orig';
     
     if(isempty(abp_orig))
         abp = zeros(size(ecg1));
@@ -32,8 +32,13 @@ function pk_locs = peak_detection_VF( ecg1_orig, ecg2_orig, abp_orig, ppg_orig, 
 %         abp = detrend(A3);
 %         abp=abp';
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
-%         [C,L] = wavedec(abp_orig,4,'db10'); 
-%         A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+       [C,L] = wavedec(abp_orig,4,'db10'); 
+       A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+       abp = detrend(A3);
+       abp=abp';
+        % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 5%%%%%%%%%%%%%
+%         [C,L] = wavedec(abp_orig,5,'db6'); 
+%         A3 = wrcoef('a',C,L,'db6',5); % mejor linea base
 %         abp = detrend(A3);
 %         abp=abp';
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym4 level 3%%%%%%%%%%%%%
@@ -61,11 +66,11 @@ function pk_locs = peak_detection_VF( ecg1_orig, ecg2_orig, abp_orig, ppg_orig, 
 %            abp = detrend(A3);
 %            abp=abp';
         %%%%%%%%%%%%%%%%%%%%%%%%%%% EMD  %%%%%%%%%%%%%%%%%%%%%
-              cleanedSignal = emd_dfadenoising (abp_orig);
-              abp=detrend(cleanedSignal);
+%               cleanedSignal = emd_dfadenoising (abp_orig);
+%               abp=detrend(cleanedSignal);
 
         %%%%%%%%%%%%%%% FILTRO BUTTERWORTH
-        %abp = filtfilt(bl_abp,al_abp,abp_orig'-abp_orig(1))+abp_orig(1);
+       %abp = filtfilt(bl_abp,al_abp,abp_orig'-abp_orig(1))+abp_orig(1);
         %%%%%%%%%%%%%%% SEÑAL ORIGINAL SIN FILTRO
         %abp=abp_orig';
     end
@@ -78,13 +83,18 @@ function pk_locs = peak_detection_VF( ecg1_orig, ecg2_orig, abp_orig, ppg_orig, 
 %         ppg = detrend(A3);
 %         ppg=ppg';
  % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 4%%%%%%%%%%%%%
-%         [C,L] = wavedec(ppg_orig,4,'db8'); 
+%         [C,L] = wavedec(ppg_orig,4,'db6'); 
 %         A3 = wrcoef('a',C,L,'db6',4); % mejor linea base
 %         ppg = detrend(A3);
 %         ppg=ppg';
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
-%         [C,L] = wavedec(ppg_orig,4,'db10'); 
-%         A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        [C,L] = wavedec(ppg_orig,4,'db10'); 
+        A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        ppg = detrend(A3);
+        ppg=ppg';
+ % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 5%%%%%%%%%%%%%
+%         [C,L] = wavedec(ppg_orig,5,'db6'); 
+%         A3 = wrcoef('a',C,L,'db6',5); % mejor linea base
 %         ppg = detrend(A3);
 %         ppg=ppg';
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym4 level 3%%%%%%%%%%%%%
@@ -112,11 +122,11 @@ function pk_locs = peak_detection_VF( ecg1_orig, ecg2_orig, abp_orig, ppg_orig, 
 %            ppg = detrend(A3);
 %            ppg=ppg';
         %%%%%%%%%%%%%%%%%%%%%%%%%%% EMD  %%%%%%%%%%%%%%%%%%%%%
-              cleanedSignal = emd_dfadenoising (ppg_orig);
-              ppg=detrend(cleanedSignal);
+%               cleanedSignal = emd_dfadenoising (ppg_orig);
+%               ppg=detrend(cleanedSignal);
 
         %%%%%%%%%%%%%%% FILTRO BUTTERWORTH
-        %ppg = filtfilt(bl_abp,al_abp,ppg_orig'-ppg_orig(1))+ppg_orig(1);
+       %ppg = filtfilt(bl_abp,al_abp,ppg_orig'-ppg_orig(1))+ppg_orig(1);
         %%%%%%%%%%%%%%% SEÑAL ORIGINAL SIN FILTRO
         %ppg=ppg_orig';
     end    

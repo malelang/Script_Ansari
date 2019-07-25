@@ -321,106 +321,106 @@ else
 if(numRecord<=50)
     Noise = load('Noise_Seed_m03');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-  MA_Seed = [MA_Seed Rest];    
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+   MA_Seed = [MA_Seed Rest];    
 %    MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>50 && numRecord<=100)
     Noise = load('Noise_Seed_m06');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>100 && numRecord<=150)
     Noise = load('Noise_Seed_m08');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>150 && numRecord<=200)
     Noise = load('Noise_Seed_m12');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>200 && numRecord<=250)
     Noise = load('Noise_Seed_m13');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>250 && numRecord<=300)
     Noise = load('Noise_Seed_m15');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
-  %   MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
+%     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>300 && numRecord<=350)
     Noise = load('Noise_Seed_m17');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>350 && numRecord<=400)
-    Noise = load('Noise_Seed_m125');
+    Noise = load('Noise_Seed_m1');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>400 && numRecord<=450)
     Noise = load('Noise_Seed_m053');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>450 && numRecord<=500)
     Noise = load('Noise_Seed_m07');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
- %    MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
+%     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>500 && numRecord<=550)
     Noise = load('Noise_Seed_m09');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>550 && numRecord<=600)
     Noise = load('Noise_Seed_m11');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
- %    MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
+%     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>600 && numRecord<=650)
     Noise = load('Noise_Seed_m115');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
- %    MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
+%     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>650 && numRecord<=700)
-    Noise = load('Noise_Seed_m065');
+    Noise = load('Noise_Seed_m14');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 if(numRecord>700)
     Noise = load('Noise_Seed_m085');
     MA_Seed = Noise.TotalGaussianNoise; 
-   Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
-   MA_Seed = [MA_Seed Rest];
+    Rest = MA_Seed(1:(length(signal(:,3))-length(MA_Seed)));
+    MA_Seed = [MA_Seed Rest];
 %     MA_Seed = [MA_Seed zeros(1,length(signal(:,3))-length(MA_Seed))];
 end
 

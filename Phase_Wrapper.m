@@ -23,14 +23,18 @@ function signal_compiled = Phase_Wrapper( ecg1, ecg2, abp, ppg, pk_locs,Fs )
 %         A3 = wrcoef('a',C,L,'db6',4); % mejor linea base
 %         abp = detrend(A3);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
-%         [C,L] = wavedec(abp,4,'db10'); 
-%         A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        [C,L] = wavedec(abp,4,'db10'); 
+        A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        abp = detrend(A3);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 5%%%%%%%%%%%%%
+%         [C,L] = wavedec(abp,5,'db6'); 
+%         A3 = wrcoef('a',C,L,'db6',5); % mejor linea base
 %         abp = detrend(A3);
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym4 level 3%%%%%%%%%%%%%
 %         [C,L] = wavedec(abp,3,'sym4'); 
 %         A3 = wrcoef('a',C,L,'sym4',3); % mejor linea base
 %         abp = detrend(A3);
-        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym6 level 3%%%%%%%%%%%%%
 %         [C,L] = wavedec(abp,3,'sym6'); 
 %         A3 = wrcoef('a',C,L,'sym6',3); % mejor linea base
 %         abp = detrend(A3);
@@ -46,9 +50,9 @@ function signal_compiled = Phase_Wrapper( ecg1, ecg2, abp, ppg, pk_locs,Fs )
 %            A3=wdencmp('gbl',C,L,'db6',5,thr,sorh,keepapp);
 %            abp = detrend(A3);
 %%%%%%%%%%%%%%%%%%%%%%%%%%% EMD  %%%%%%%%%%%%%%%%%%%%%
-  cleanedSignal = emd_dfadenoising (abp);
-  cleanedSignal = cleanedSignal';
-  abp=detrend(cleanedSignal); 
+%   cleanedSignal = emd_dfadenoising (abp);
+%   cleanedSignal = cleanedSignal';
+%   abp=detrend(cleanedSignal); 
 
     %%%%%%%%%%%%%%% SE QUITA ESTA LINEA CUANDO SE HACE SIN FILTRO   
     %abp = abp - medfilt1(abp,Fs);
@@ -66,8 +70,12 @@ function signal_compiled = Phase_Wrapper( ecg1, ecg2, abp, ppg, pk_locs,Fs )
 %         A3 = wrcoef('a',C,L,'db6',4); % mejor linea base
 %         ppg = detrend(A3);
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db10 level 4%%%%%%%%%%%%%
-%         [C,L] = wavedec(ppg,4,'db10'); 
-%         A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        [C,L] = wavedec(ppg,4,'db10'); 
+        A3 = wrcoef('a',C,L,'db10',4); % mejor linea base
+        ppg = detrend(A3);
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets db6 level 5%%%%%%%%%%%%%
+%         [C,L] = wavedec(ppg,5,'db6'); 
+%         A3 = wrcoef('a',C,L,'db6',5); % mejor linea base
 %         ppg = detrend(A3);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%wavelets sym4 level 3%%%%%%%%%%%%%
 %         [C,L] = wavedec(ppg,3,'sym4'); 
@@ -89,9 +97,9 @@ function signal_compiled = Phase_Wrapper( ecg1, ecg2, abp, ppg, pk_locs,Fs )
 %            A3=wdencmp('gbl',C,L,'db6',5,thr,sorh,keepapp);
 %            ppg = detrend(A3);
 %%%%%%%%%%%%%%%%%%%%%%%%%%% EMD  %%%%%%%%%%%%%%%%%%%%%
-  cleanedSignal = emd_dfadenoising (ppg);
-  cleanedSignal = cleanedSignal';
-  ppg=detrend(cleanedSignal); 
+%   cleanedSignal = emd_dfadenoising (ppg);
+%   cleanedSignal = cleanedSignal';
+%   ppg=detrend(cleanedSignal); 
            
     %%%%%%%%%%%%%%% SE QUITA ESTA LINEA CUANDO SE HACE SIN FILTRO      
     %ppg = ppg - medfilt1(ppg,Fs);
